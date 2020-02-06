@@ -1,0 +1,528 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-T78JJLJ');</script>
+	<!-- End Google Tag Manager -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Daniel Guedegbe</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+
+  <!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700" rel="stylesheet">
+	
+	
+	<link rel="stylesheet" href="{% static 'porto/css/animate.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'porto/css/icomoon.css' %}">
+
+	<link rel="stylesheet" href="{% static 'porto/css/bootstrap.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'porto/css/flexslider.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'porto/fonts/flaticon/font/flaticon.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'porto/css/owl.carousel.min.css' %}">
+	<link rel="stylesheet" href="{% static 'porto/css/owl.theme.default.min.css' %}">
+	
+	<link rel="stylesheet" href="{% static 'porto/css/style.css' %}">
+
+	
+	<script src="{% static 'porto/js/modernizr-2.6.2.min.js' %}"></script>
+	<script>
+		window.setTimeout(function() {
+			$(".alert").fadeTo(500, 0).slideUp(500, function(){
+				$(this).remove(); 
+			});
+		}, 3000);
+	</script>
+	
+	</head>
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T78JJLJ"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	
+	<div id="colorlib-page">
+		<div class="container-wrap">
+			{% if messages %}
+				{% for message in messages %}
+						<div class="alert alert-success" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							<strong>{{message}}</strong> 
+						</div>
+			    {% endfor %}
+			{% endif 	%}	
+			
+		<a  class="js-colorlib-nav-toggle colorlib-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+		<aside id="colorlib-aside" role="complementary" class="border js-fullheight">
+			<div class="text-center">
+				
+			{% for u in user %}
+				<div class="author-img" style="background-image: url({{ u.photo.url}});"></div>
+				<h1 id="colorlib-logo"><a href="index.html">{{u.nom}}</a></h1>
+				<span class="position"><a >{{u.role}}</a> </span>
+			{% empty %}
+				<h1>Aucune Information Sur Vous </h1>
+			{% endfor %}
+			</div>
+			<nav id="colorlib-main-menu" role="navigation" class="navbar">
+				<div id="navbar" class="collapse">
+					<ul>
+						<li class="active"><a  data-nav-section="home">Accueil</a></li>
+						<li><a  data-nav-section="about">A propos </a></li>
+						<li><a  data-nav-section="services">Services</a></li>
+						<li><a  data-nav-section="skills">Competences</a></li>
+						<li><a  data-nav-section="education">Education</a></li>
+						<li><a  data-nav-section="experience">Experience</a></li>
+						<li><a  data-nav-section="work">Realisation </a></li>
+						<li><a href="#contact" data-nav-section="contact">Contact</a></li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="colorlib-footer">
+			{% for c in right %}
+				<p>
+					<small>	
+				Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{c.droit}} <a href="{{ c.url }}" target="_blank">{{c.titre}}</a>
+				 </span> </small></p>
+			{% empty %}
+				 <h1>Pas de CopyRight </h1>
+			{% endfor %}
+				<ul>
+					<li><a ><i class="icon-facebook2"></i></a></li>
+					<li><a ><i class="icon-twitter2"></i></a></li>
+					<li><a ><i class="icon-instagram"></i></a></li>
+					<li><a ><i class="icon-linkedin2"></i></a></li>
+				</ul>
+			</div>
+
+		</aside>
+
+		<div id="colorlib-main">
+			<section id="colorlib-hero" class="js-fullheight" data-section="home">
+				<div class="flexslider js-fullheight">
+				
+					<ul class="slides">
+				{%for  head in header %}
+				   	<li style="background-image: url({{ head.bg1.url }});">
+				   		<div class="overlay"></div>
+				   		<div class="container-fluid">
+				   			<div class="row">
+					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
+					   				<div class="slider-text-inner js-fullheight">
+					   					<div class="desc">
+						   					<h1 style="color:white">Salut ! <br> {{head.hello1}}</h1>
+						   					<h2 style="color:white ;background-color: rgb(0, 0, 0)"">{{head.qui}} <a href="{{head.github}}" target="_blank">{{head.titre}}</a></h2>
+												<p style="color:white"><a href="{{ head.cv_url }}" class="btn btn-primary btn-learn">Télecharger le CV <i class="icon-download4"></i></a></p>
+											</div>
+					   				</div>
+					   			</div>
+					   		</div>
+				   		</div>
+				   	</li>
+				   	<li style="background-image: url({% static 'porto/images/img_bg_2.jpeg' %});">
+				   		<div class="overlay"></div>
+				   		<div class="container-fluid">
+				   			<div class="row">
+					   			<div class="col-md-6 col-md-offset-3 col-md-pull-3 col-sm-12 col-xs-12 js-fullheight slider-text">
+					   				<div class="slider-text-inner">
+					   					<div class="desc" style="background-color: transparent;">
+						   					<h1 style="color:white"> {{head.hello2}}</h1>
+												<h2 style="color:white"> <a href="{{head.github}}" target="_blank">{{head.titre}}</a></h2>
+												<p ><a  href="{{head.portfolio_url}}" target="_blank" class="btn btn-primary btn-learn">{{head.titre_button_portfolio}} <i class="icon-briefcase3"></i></a></p>
+											</div>
+					   				</div>
+					   			</div>
+					   		</div>
+				   		</div>
+					   </li>
+					{% empty%}
+						<h1>Aucun Header Pour Le moment </h1>
+					{% endfor%}
+
+				  	</ul>
+			  	</div>
+			</section>
+
+			<section class="colorlib-about" data-section="about">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
+								<div class="col-md-12">
+									<div class="about-desc">
+									{% for moi in mois	 %}
+											<span class="heading-meta">À propos de Moi</span>
+											<h2 class="colorlib-heading">{{ moi.titre }}</h2>
+											<p>{{ moi.description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui deserunt at natus nesciunt ex voluptates et aut dolorum fugit, laudantium ipsum illo sint, minima dolorem unde aliquam fuga facere repudiandae.</p>
+									{% empty%}
+											<h1>Aucune informations pour le moment .</h1>
+									{% endfor %}
+									</div>
+								</div>
+							</div>
+							<div class="row">
+							{% for compt in competence %}
+								<div class="col-md-3 animate-box" data-animate-effect="fadeInLeft">
+									<div class="{{compt.div_class}}">
+										<span class="icon2"><i class="{{compt.i_class}}"></i></span>
+										<h3>{{compt.titre}}</h3>
+									</div>
+								</div>
+							{% empty%}
+								<h1>Aucune informations pour le moment .</h1>
+							{% endfor %}
+								
+							<div class="row">
+								<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+								{% for slog in slogan %}
+									<div class="hire">
+										<h2>{{ slog.titre }}</h2>
+										<a  class="btn-hire">{{ slog.button_titre }}</a>
+									</div>
+								{% empty%}
+									<h1>Aucune informations pour le moment .</h1>
+								{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+			
+			<section class="colorlib-services" data-section="services">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Qu'est ce que je fais ?</span>
+							<h2 class="colorlib-heading">
+								Voici Quelques-unes de mes Expertises</h2>
+						</div>
+					</div>
+					<div class="row row-pt-md">
+						{% for exp in expert %}
+						<div class="col-md-4 text-center animate-box">
+							<div class="{{exp.div_class}}">
+								<span class="icon">
+									<i class="{{exp.i_class }}"></i>
+								</span>
+								<div class="desc">
+									<h3>{{exp.titre}}</h3>
+									<p>{{exp.description}}</p>
+								</div>
+							</div>
+						</div>
+					{% empty%}
+						<h1>Aucune informations pour le moment .</h1>
+					{% endfor %}
+				
+					
+					</div>
+				</div>
+			</section>
+			
+			<div id="colorlib-counter" class="colorlib-counters" style="background-image: url({% static 'porto/images/cover_bg_1.jpg' %});" data-stellar-background-ratio="0.5">
+				<div class="overlay"></div>
+				<div class="colorlib-narrow-content">
+					<div class="row">
+					</div>
+					<div class="row">
+				{% for compteur in compte %}
+						<div class="col-md-3 text-center animate-box">
+							<span class="colorlib-counter js-counter" data-from="0" data-to="{{ compteur.data_to }}" data-speed="{{ compteur.data_speed }}" data-refresh-interval="{{ compteur.data_refresh_interval }}"></span>
+							<span class="colorlib-counter-label">{{ compteur.label }}</span>
+						</div>
+				{% empty%}
+									<h1>Aucune informations pour le moment .</h1>
+				{% endfor %}
+						
+						
+					</div>
+				</div>
+			</div>
+
+			<section class="colorlib-skills" data-section="skills">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Mes Spécialitées</span>
+							<h2 class="colorlib-heading animate-box">Mes Competences </h2>
+						</div>
+					</div>
+					<div class="row">
+					{% for d in bf %}
+						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+							<p>{{ d.description}}</p>
+						</div>
+					{% empty%}
+						<h1>Aucune informations pour le moment .</h1>
+					{% endfor %}
+						{% for pour in pourcent %}
+						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
+							<div class="progress-wrap">
+								<h3>{{pour.language}}</h3>
+								<div class="progress">
+								 	<div class="{{ pour.couleur }}" role="progressbar" aria-valuenow="{{ pour.value}}"
+								  	aria-valuemin="0" aria-valuemax="100" style="width:{{ pour.value}}%">
+								    <span>{{ pour.value}}%</span>
+								  	</div>
+								</div>
+							</div>
+						</div>
+					{% empty%}
+						<h1>Aucune informations pour le moment .</h1>
+					{% endfor %}
+					
+					</div>
+				</div>
+			</section>
+
+			<section class="colorlib-education" data-section="education">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Education</span>
+							<h2 class="colorlib-heading animate-box">Education</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12 animate-box" data-animate-effect="fadeInLeft">
+							<div class="fancy-collapse-panel">
+								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+								{%for edu in education %}
+									<div class="panel panel-default">
+									    <div class="panel-heading" role="tab" id="headingOne">
+									        <h4 class="panel-title">
+									            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">{{ edu.titre }}
+									            </a>
+									        </h4>
+									    </div>
+									    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+									        <div class="panel-body">
+									            <p>{{ edu.description }}</p>
+													<ul>
+														<li>{{ edu.activite1 }}</li>
+														<li>{{ edu.activite2 }}</li>
+														<li>{{ edu.activite3 }}</li>
+														<li>{{ edu.activite4 }}</li>
+														<li>{{ edu.activite5 }}</li>
+														
+													</ul>
+									        </div>
+									    </div>
+									</div>
+								{% empty%}
+									<h1>Aucune informations pour le moment .</h1>
+								{% endfor %}
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="colorlib-experience" data-section="experience">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Experience</span>
+							<h2 class="colorlib-heading animate-box">Expérience Professionnelle</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+				         <div class="timeline-centered">
+						{% for w in work %}
+					         <article class="timeline-entry animate-box" data-animate-effect="{{w.fade}}">
+					            <div class="timeline-entry-inner">
+
+					               <div class="{{w.div_class}}">
+					                  <i class="{{w.i_class}}"></i>
+					               </div>
+
+					               <div class="timeline-label">
+					                  <h2><a >{{w.titre}}</a> <span>{{w.de }}-{{w.a}}</span></h2>
+					                  <p>{{w.description }}</p>
+					               </div>
+					            </div>
+							 </article>
+						{% empty%}
+							 <h1>Rien Pour le moment</h1>
+						{% endfor %}
+
+
+					         <article class="timeline-entry begin animate-box" data-animate-effect="fadeInBottom">
+					            <div class="timeline-entry-inner">
+					               <div class="timeline-icon color-none">
+					               </div>
+					            </div>
+					         </article>
+					      </div>
+					   </div>
+				   </div>
+				</div>
+			</section>
+
+			<section class="colorlib-work" data-section="work">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Mes Travaux </span>
+							<h2 class="colorlib-heading animate-box">Activités recentes</h2>	
+						</div>
+					</div>
+					<div class="row row-bottom-padded-sm animate-box" data-animate-effect="fadeInLeft">
+						<div class="col-md-12">
+							<p class="work-menu">
+							{% for l in liens %}
+								<span><a href="{{ l.lien }}" class="active">{{ l.titre}}</a>
+							{% empty %}
+									<h1>Rien pour le moment </h1>
+							{% endfor %}
+								
+						</div>
+					</div>
+					<div class="row">
+					{% for projet in projets %}
+						<div class="col-md-6 animate-box" data-animate-effect="{{projet.fadein}}">
+							<div class="project" style="background-image: url({{projet.image.url}});">
+								
+								<div class="desc">
+									<div class="con">
+										<h3><a href="{{projet.lien}}">{{project.titre1}}</a></h3>
+										<span>{{projet.titre2}}</span>
+										<p class="icon">
+											<span><a href="{{ projet.url_partage}}"><i class="icon-share3"></i></a></span>
+											<span><a ><i class="icon-eye"></i> {{projet.vue}}</a></span>
+											<span><a ><i class="icon-heart"></i>{{projet.aime}}</a></span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% empty %}
+						<h1>Rien Pour le moment </h1>
+					{% endfor %}
+					<div class="row">
+						<div class="col-md-12 animate-box">
+							<p><a href="https://github.com/daniel10027" class="btn btn-primary btn-lg btn-load-more">Voir Plus <i class="icon-reload"></i></a></p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="colorlib-contact" data-section="contact">
+				<div class="colorlib-narrow-content">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+							<span class="heading-meta">Contact Rapide </span>
+							<h2 class="colorlib-heading">Contact</h2>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-5">
+						{% for c in contact %}
+							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+								<div class="colorlib-icon">
+									<i class="icon-globe-outline"></i>
+								</div>
+					
+								<div class="colorlib-text">
+									<p><a >{{ c.email }}</a></p>
+								</div>
+							</div>
+
+							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+								<div class="colorlib-icon">
+									<i class="icon-map"></i>
+								</div>
+							
+								<div class="colorlib-text">
+									<p>{{ c.ville }}</p>
+								</div>
+							</div>
+
+							<div class="colorlib-feature colorlib-feature-sm animate-box" data-animate-effect="fadeInLeft">
+								<div class="colorlib-icon">
+									<i class="icon-phone"></i>
+								</div>
+								<div class="colorlib-text">
+									<p><a href="tel://">{{ c.telephone }}</a></p>
+								</div>
+						{% empty %}
+								<h1>Pas d'info pour le moment </h1>
+						{% endfor %}
+					</div>
+						</div>
+
+						<div class="col-md-7 col-md-push-1">
+							<div class="row">
+								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
+									<form  method="POST" action="">
+												{% csrf_token %}
+												{{ form | crispy}}
+										<div class="form-group">
+											<input type="submit" class="btn btn-primary btn-send-message" value="Envoyer">
+										</div>
+									</form>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+	</div>
+
+
+	<script src="{% static 'porto/js/jquery.min.js' %}"></script>
+	
+	<script src="{% static 'porto/js/jquery.easing.1.3.js' %}"></script>
+
+	<script src="{% static 'porto/js/bootstrap.min.js' %}"></script>
+	
+	<script src="{% static 'porto/js/jquery.waypoints.min.js' %}"></script>
+
+	<script src="{% static 'porto/js/jquery.flexslider-min.js' %}"></script>
+	
+	<script src="{% static 'porto/js/owl.carousel.min.js' %}"></script>
+
+	<script src="{% static 'porto/js/jquery.countTo.js' %}"></script>
+	<script src="{% static 'porto/js/main.js' %}"></script>
+
+	</body>
+</html>
+
