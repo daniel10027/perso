@@ -84,7 +84,7 @@
 			<div class="text-center">
 				
 			{% for u in user %}
-				<div class="author-img" style="background-image: url({{ u.photo.url}});"></div>
+				<div class="author-img" style="background-image: url({% static 'porto/images/about.jpeg' %});"></div>
 				<h1 id="colorlib-logo"><a href="index.html">{{u.nom}}</a></h1>
 				<span class="position"><a >{{u.role}}</a> </span>
 			{% empty %}
@@ -131,7 +131,7 @@
 				
 					<ul class="slides">
 				{%for  head in header %}
-				   	<li style="background-image: url({{ head.bg1.url }});">
+				   	<li style="background-image: url({% static 'porto/images/img_bg_1.jpeg' %});">
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
 				   			<div class="row">
@@ -181,7 +181,7 @@
 									{% for moi in mois	 %}
 											<span class="heading-meta">À propos de Moi</span>
 											<h2 class="colorlib-heading">{{ moi.titre }}</h2>
-											<p>{{ moi.description }} Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui deserunt at natus nesciunt ex voluptates et aut dolorum fugit, laudantium ipsum illo sint, minima dolorem unde aliquam fuga facere repudiandae.</p>
+											<p>{{ moi.description }}</p>
 									{% empty%}
 											<h1>Aucune informations pour le moment .</h1>
 									{% endfor %}
@@ -415,7 +415,7 @@
 					<div class="row">
 					{% for projet in projets %}
 						<div class="col-md-6 animate-box" data-animate-effect="{{projet.fadein}}">
-							<div class="project" style="background-image: url({{projet.image.url}});">
+							<div class="project" style="background-image: url({% static 'porto/images/img_bg_1.jpeg' %});">
 								
 								<div class="desc">
 									<div class="con">
